@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slider di GC</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- ICONE DI BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>slider di GC</title>
     
-</head>
-<body>
-    
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <section class="container" id="root">
+        
+      <div class="carosel p-5">
+        <div id="arrow-left" class="arrow-left">
+          <i @click="gotoPrev()"    class="bi bi-arrow-left-circle"></i>
+           </div>   
+        <div id="big-img" class="big-img border mb-3">
+          
+             <img v-for="(pic,i) in pictures"   :src="pic.image" alt="pic.title" v-show="i === currentindex">
+             
+        
+        </div>
+        <div id="arrow-right" class="arrow-right">
+          <i @click="gotoNext()"  class="bi bi-arrow-right-circle"></i>
+           </div>
+        <div id="thumb" class="thumb">
+          <img v-for="(pic,i) in pictures" @click="gotoThis(i)"  :src="pic.image" alt="pic.title" :class="{'active': i === currentindex}">
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="js/script.js"></script>
-</body>
+
+    <script defer src="js/script.js"></script>
+  </body>
 </html>
+
